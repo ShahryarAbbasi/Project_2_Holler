@@ -1,13 +1,13 @@
 const express = require('express')
 const methodOverride = require('method-override');
-
+require('dotenv').config();
+require('./config/db.connection')
 const app = express()
 const PORT = 4000
 app.set('view engine', 'ejs')
 
 app.use(express.static('public'))
 app.use(methodOverride('_method'));
-
 app.get('/', (req, res)=> {
     res.render('home.ejs')
 })
