@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
 const hollerSchema = new mongoose.Schema({
     body: { 
@@ -9,7 +10,7 @@ const hollerSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Types.ObjectId,
-        ref: "Users"
+        ref: "User"
     }
 }, { timestamps: true })
 

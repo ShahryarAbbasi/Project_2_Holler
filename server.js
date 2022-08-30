@@ -12,4 +12,11 @@ app.get('/', (req, res)=> {
     res.render('home.ejs')
 })
 
+// Linking users.js router
+const userRouter = require("./config/users_controller");
+app.use("/users", userRouter);
+// Linking holler.js router
+const hollerRouter = require("./config/hollers_controller");
+app.use("/hollers", hollerRouter);
+
 app.listen(4000, () => console.log('starting server at port:', PORT))
