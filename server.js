@@ -14,7 +14,7 @@ app.get('/', (req, res)=> {
 
 // Linking users.js router
 const userRouter = require("./config/users_controller");
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 // Linking holler.js router
 const hollerRouter = require("./config/hollers_controller");
 app.use("/hollers", hollerRouter);
