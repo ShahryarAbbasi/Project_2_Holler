@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // Middleware that might be needed later on
-// router.use(express.json());
-// router.use(express.urlencoded({extended:false}));
+//router.use(express.json());
+//router.use(express.urlencoded({extended:false}));
 
 const db = require("../models");
 // All hollers
