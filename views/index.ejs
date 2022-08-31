@@ -15,7 +15,7 @@
             <% let userId = hollers[i].user %>
            <% let currentUser = users.findIndex(x => x._id === userId) %>
            
-        <p><%= users[i].handle %>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a></p>
+        <p><%= users[i].handle%>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a></p>
     <%}%>
     </div>
 </body>

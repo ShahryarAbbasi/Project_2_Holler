@@ -1,4 +1,5 @@
 const express = require("express");
+const { User } = require("../models");
 const router = express.Router();
 
 // Middleware that might be needed later on
@@ -47,7 +48,8 @@ router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
     const allUsers = await db.User.find();
-    const context = { hollers: allHollers, users: allUsers };
+    // const foundUser = await db.Holler.find().populate({path: 'user', model: 'User'})
+    const context = { hollers: allHollers, users: allUsers, };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
