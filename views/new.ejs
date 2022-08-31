@@ -9,8 +9,21 @@
 </head>
 <body>
     <h1>Create a new holler</h1>
-    <form>
-        
+    <form action="/hollers" method="POST" >
+        <div>
+           <label for="body">Write Something</label> 
+            <input class="input" name="body" type="text" id="body"/>
+        </div>
+        <div>
+            image:
+            <input class="input" name="image" type="text" id="image"/>
+        </div>
+        <div>
+            <select name="user">
+            
+            </select>
+        </div>
+        <button type="submit">Post Holler</button>
     </form>
 </body>
 </html>
