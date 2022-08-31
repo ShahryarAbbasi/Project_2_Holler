@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // Middleware that might be needed later on
-//router.use(express.json());
-//router.use(express.urlencoded({extended:false}));
+router.use(express.json());
+router.use(express.urlencoded({extended:false}));
 
 const db = require("../models");
 // All hollers
@@ -12,7 +12,9 @@ const db = require("../models");
 // });
 // getting the form for a new holler
 router.get("/new", (req, res) => {
-  res.render("new.ejs");
+  const allUsers = db.User.find();
+  const context = { users: allUsers };
+  res.render("new.ejs", context);
 });
 
 // Post request for adding new holler to db
@@ -21,7 +23,7 @@ router.post("/", async (req, res) => {
   try {
     const newHoller = await db.Holler.create(createdHoller);
 
-    res.redirect(`/hollers`);
+    res.redirect("/hollers");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
@@ -44,7 +46,8 @@ router.get("/:hollerIndex", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
-    const context = { hollers: allHollers };
+    const allUsers = await db.User.find();
+    const context = { hollers: allHollers, users: allUsers };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
