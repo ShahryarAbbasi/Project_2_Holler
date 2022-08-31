@@ -4,10 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css" />
     <title>Document</title>
 </head>
 <body>
-    <h1>Detail View</h1>
+    <h5>
+        Details of Holler
+    </h5>
+    <h3><%=holler.body%></h3>
+    <p><%=holler.createdAt%></p>
+    <div>
+        <p class="control">
+            <form action="/hollers/<%= holler.id %>?_method=DELETE" method="POST">
+                    <input class="button is-danger" type="submit" value="Delete Holler"/>                    
+            </form>
+        </p>
 
+    </div>
 </body>
 </html>
