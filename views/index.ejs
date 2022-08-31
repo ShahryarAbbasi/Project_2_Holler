@@ -10,6 +10,11 @@
 <body>
     <h1>Holler Timeline</h1>
     <button><a href="/hollers/new">Holler Something!</a></button>
-    <p><%= products[0].body%></p>
+    <div class="timeline"> 
+        <% for(let i = 0; i < hollers.length; i++) {%>
+            <%= let userId = hollers[i]._id %>
+        <p><%= users.find(userId).handle %>: <%= hollers[i].body%></p>
+    <%}%>
+    </div>
 </body>
 </html>
