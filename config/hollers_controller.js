@@ -7,15 +7,15 @@ const router = express.Router();
 
 const db = require("../models");
 // All hollers
-router.get("/", (req, res) => {
-  res.send("All the hollers right here");
-});
+// router.get("/", (req, res) => {
+//   res.send("All the hollers right here");
+// });
 // getting the form for a new holler
 router.get("/new", (req, res) => {
-  res.send("New holler ");
+  res.render("new.ejs");
 });
 
-// Post request for adding new holler to db 
+// Post request for adding new holler to db
 router.post("/", async (req, res) => {
   const createdHoller = req.body;
   try {
