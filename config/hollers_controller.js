@@ -12,8 +12,8 @@ const db = require("../models");
 //   res.send("All the hollers right here");
 // });
 // getting the form for a new holler
-router.get("/new", (req, res) => {
-  const allUsers = db.User.find();
+router.get("/new", async (req, res) => {
+  const allUsers = await db.User.find();
   const context = { users: allUsers };
   res.render("new.ejs", context);
 });
