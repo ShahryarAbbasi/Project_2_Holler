@@ -73,4 +73,18 @@ router.get("/:hollerId/edit", async (req, res) => {
     res.redirect("/404");
   }
 });
+
+// update router
+router.put("/:hollerId", async (req, res) => {
+  try {
+    const updatedData = req.body;
+    await db.Hollers.findByIdAndUpdate(req.params.productId, updatedData, {
+      new: true,
+    });
+    res.redirect(`/hollers/${req.params.hollerId}`);
+  } catch (err) {
+    console.log(err);
+    res.redirect("/404");
+  }
+});
 module.exports = router;
