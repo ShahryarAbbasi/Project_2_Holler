@@ -14,7 +14,7 @@ const db = require("../models");
 router.get("/new", (req, res) => {
   const allUsers = db.User.find();
   const context = { users: allUsers };
-  res.render("new.ejs");
+  res.render("new.ejs", context);
 });
 
 // Post request for adding new holler to db
