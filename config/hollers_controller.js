@@ -44,7 +44,7 @@ router.get("/:hollerIndex", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
-    const context = { products: allHollers };
+    const context = { hollers: allHollers };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
@@ -78,7 +78,7 @@ router.get("/:hollerId/edit", async (req, res) => {
 router.put("/:hollerId", async (req, res) => {
   try {
     const updatedData = req.body;
-    await db.Holler.findByIdAndUpdate(req.params.productId, updatedData, {
+    await db.Holler.findByIdAndUpdate(req.params.hollerId, updatedData, {
       new: true,
     });
     res.redirect(`/hollers/${req.params.hollerId}`);
