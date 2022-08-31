@@ -44,7 +44,8 @@ router.get("/:hollerIndex", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
-    const context = { hollers: allHollers };
+    const allUsers = await db.User.find();
+    const context = { hollers: allHollers, users: allUsers };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
