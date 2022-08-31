@@ -12,6 +12,8 @@ const db = require("../models");
 // });
 // getting the form for a new holler
 router.get("/new", (req, res) => {
+  const allUsers = db.User.find();
+  const context = { users: allUsers };
   res.render("new.ejs");
 });
 
@@ -21,7 +23,7 @@ router.post("/", async (req, res) => {
   try {
     const newHoller = await db.Holler.create(createdHoller);
 
-    res.redirect(`/hollers`);
+    res.redirect("/hollers");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
