@@ -7,15 +7,15 @@ const router = express.Router();
 
 const db = require("../models");
 // All hollers
-router.get("/", (req, res) => {
-  res.send("All the hollers right here");
-});
+// router.get("/", (req, res) => {
+//   res.send("All the hollers right here");
+// });
 // getting the form for a new holler
 router.get("/new", (req, res) => {
-  res.send("New holler ");
+  res.render("new.ejs");
 });
 
-// creating a new holler
+// Post request for adding new holler to db
 router.post("/", async (req, res) => {
   const createdHoller = req.body;
   try {
@@ -28,10 +28,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// show a specific holler
+// Show a specific holler
 router.get("/:hollerIndex", async (req, res) => {
   try {
-    const foundHoller = await db.Hollers.findById(req.params.hollerIndex);
+    const foundHoller = await db.Holler.findById(req.params.hollerIndex);
     res.render("show.ejs", { holler: foundHoller, id: foundHoller._id });
   } catch (err) {
     console.log(err);
@@ -43,8 +43,8 @@ router.get("/:hollerIndex", async (req, res) => {
 // post request for all hollers from holler db
 router.get("/", async (req, res) => {
   try {
-    const allHollers = await db.Hollerss.find();
-    const context = { products: allHollers };
+    const allHollers = await db.Holler.find();
+    const context = { hollers: allHollers };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
 // deleting a holler
 router.delete("/:hollerId", async (req, res) => {
   try {
-    const foundHoller = await db.Hollers.findByIdAndDelete(req.params.hollerId);
+    const foundHoller = await db.Holler.findByIdAndDelete(req.params.hollerId);
     return res.redirect("/hollers");
   } catch (err) {
     console.log(err);
@@ -66,7 +66,7 @@ router.delete("/:hollerId", async (req, res) => {
 // editing a holler
 router.get("/:hollerId/edit", async (req, res) => {
   try {
-    const foundHoller = await db.Hollers.findById(req.params.hollerId);
+    const foundHoller = await db.Holler.findById(req.params.hollerId);
     res.render("edit.ejs", { holler: foundHoller, id: foundHoller._id });
   } catch (err) {
     console.log(err);
@@ -78,7 +78,7 @@ router.get("/:hollerId/edit", async (req, res) => {
 router.put("/:hollerId", async (req, res) => {
   try {
     const updatedData = req.body;
-    await db.Hollers.findByIdAndUpdate(req.params.productId, updatedData, {
+    await db.Holler.findByIdAndUpdate(req.params.hollerId, updatedData, {
       new: true,
     });
     res.redirect(`/hollers/${req.params.hollerId}`);
