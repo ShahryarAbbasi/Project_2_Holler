@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css" />
+    <title>Holler</title>
+</head>
+<body>
+    <h1><%=user.handle%>'s Profile</h1>
+    <div class="User Hollers"> 
+        <% for(let i = 0; i < hollers.length; i++) {%>
+            <% let userId = hollers[i].user %>
+            <%if (userId == user.id) {%>
+                <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+                <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
+            <% } %>
+        <% } %>
+    </div>
+</body>
+</html>

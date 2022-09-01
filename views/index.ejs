@@ -13,9 +13,14 @@
     <div class="timeline"> 
         <% for(let i = 0; i < hollers.length; i++) {%>
             <% let userId = hollers[i].user %>
-           <% let currentUser = users.findIndex(x => x._id === userId) %>
-           
-        <p><%= users[i].handle %>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a></p>
+           <% let currentUser%>
+           <% for (let j = 0; j < users.length; j++) {%>
+                <%if (userId == users[j].id) {%>
+                    <% currentUser = users[j] %>
+                <% } %>
+            <% } %>
+        <p><a href="/user/<%=currentUser._id%>"><%= currentUser.handle%>: </a><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+        <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
     <%}%>
     </div>
 </body>
