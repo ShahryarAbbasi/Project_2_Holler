@@ -9,6 +9,11 @@ const hollerSchema = new mongoose.Schema({
     image: {
         type: String
     },
+    likes: {
+        type: Number,
+        default: 0,
+        required: true
+    },
     user: {
         type: mongoose.Types.ObjectId,
         ref: "User",
