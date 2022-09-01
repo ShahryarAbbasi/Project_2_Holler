@@ -52,7 +52,7 @@ router.get("/", async (req, res) => {
     const allUsers = await db.User.find();
    
     // const foundThreads = await Thread.find().populate({path: 'user', model: 'User'})
-    const context = { hollers: allHollers, users: allUsers };
+    const context = { hollers: allHollers, users: allUsers};
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
