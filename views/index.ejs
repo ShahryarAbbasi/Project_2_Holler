@@ -15,11 +15,11 @@
             <% let userId = hollers[i].user %>
            <% let currentUser%>
            <% for (let j = 0; j < users.length; j++) {%>
-                <%if (userId == users[j]._id) {%>
+                <%if (userId == users[j].id) {%>
                     <% currentUser = users[j] %>
                 <% } %>
             <% } %>
-        <p><%= userId%>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+        <p><%= currentUser.handle%>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
         <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
     <%}%>
     </div>
