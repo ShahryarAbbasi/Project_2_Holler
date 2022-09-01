@@ -11,7 +11,9 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res)=> {
     res.render('home.ejs')
 })
-
+app.get('/404', (req,res)=>{
+  res.render('404.ejs')
+})
 // Linking users.js router
 const userRouter = require("./config/users_controller");
 app.use("/user", userRouter);
