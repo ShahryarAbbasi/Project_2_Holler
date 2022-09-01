@@ -8,7 +8,15 @@
     <title>Holler</title>
 </head>
 <body>
-    <h1><%= user.handle%>'s Profile</h1>
-    
+    <h1><%=user.handle%>'s Profile</h1>
+    <div class="User Hollers"> 
+        <% for(let i = 0; i < hollers.length; i++) {%>
+            <% let userId = hollers[i].user %>
+            <%if (userId == user.id) {%>
+                <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+                <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
+            <% } %>
+        <% } %>
+    </div>
 </body>
 </html>

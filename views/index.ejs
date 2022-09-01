@@ -19,7 +19,7 @@
                     <% currentUser = users[j] %>
                 <% } %>
             <% } %>
-        <p><%= currentUser.handle%>: <a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+        <p><a href="/user/<%=currentUser._id%>"><%= currentUser.handle%>: </a><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
         <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
     <%}%>
     </div>
