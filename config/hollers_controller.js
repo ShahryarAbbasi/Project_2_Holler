@@ -1,4 +1,5 @@
 const express = require("express");
+const { User } = require("../models")
 const router = express.Router();
 
 // Middleware that might be needed later on
@@ -30,6 +31,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+
 // Show a specific holler
 router.get("/:hollerIndex", async (req, res) => {
   try {
@@ -42,12 +44,14 @@ router.get("/:hollerIndex", async (req, res) => {
   // res.send(`Show holler ${req.params.id} `);
 });
 
+
 // post request for all hollers from holler db
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
     const allUsers = await db.User.find();
-    const foundThreads = await Thread.find().populate({path: 'user', model: 'User'})
+   
+    // const foundThreads = await Thread.find().populate({path: 'user', model: 'User'})
     const context = { hollers: allHollers, users: allUsers };
     res.render("index.ejs", context);
   } catch (err) {
