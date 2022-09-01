@@ -52,13 +52,14 @@ router.get("/", async (req, res) => {
     let allUsers = [];
     allHollers.forEach( async (holler) => {
         const thisUser = await db.User.findById(holler.user)
-        console.log(thisUser)
+        //console.log(thisUser)
         allUsers.push(thisUser)
+        console.log(allUsers)
     })
-    console.log(allUsers)
     // const foundUser = await db.Holler.find().populate({path: 'user', model: 'User'})
     const context = { hollers: allHollers, users: allUsers, };
-    console.log(`Users: ${allUsers[0]._id.keys} Hollers: ${allHollers[0].users}`)
+    //console.log(context)
+    //console.log(`Users: ${allUsers[0]._id.keys} Hollers: ${allHollers[0].users}`)
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
