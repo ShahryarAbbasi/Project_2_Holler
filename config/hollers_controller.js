@@ -35,8 +35,6 @@ router.post("/", async (req, res) => {
 router.get("/:hollerIndex", async (req, res) => {
   try {
     const foundHoller = await db.Holler.findById(req.params.hollerIndex);
-    const hollerUser = await db.User.findById(foundHoller.user)
-    console.log(`Holler: ${foundHoller} User: ${hollerUser}`)
     res.render("show.ejs", { holler: foundHoller, id: foundHoller._id });
   } catch (err) {
     console.log(err);
@@ -49,17 +47,9 @@ router.get("/:hollerIndex", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
-    let allUsers = [];
-    allHollers.forEach( async (holler) => {
-        const thisUser = await db.User.findById(holler.user)
-        //console.log(thisUser)
-        allUsers.push(thisUser)
-        console.log(allUsers)
-    })
+    const allUsers = await db.User.find();
     // const foundUser = await db.Holler.find().populate({path: 'user', model: 'User'})
     const context = { hollers: allHollers, users: allUsers, };
-    //console.log(context)
-    //console.log(`Users: ${allUsers[0]._id.keys} Hollers: ${allHollers[0].users}`)
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
