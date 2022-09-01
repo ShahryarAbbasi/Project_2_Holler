@@ -27,6 +27,7 @@ res.redirect("/hollers");
 router.get("/:userIndex", async (req, res) => {
   try {
     const foundUser = await db.User.findById(req.params.userIndex);
+    const foundHoller = await db.Holler.find()
     res.render("user/user.ejs", { user: foundUser, id: foundUser._id });
   } catch (err) {
     console.log(err);
