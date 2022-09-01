@@ -27,8 +27,8 @@ res.redirect("/hollers");
 router.get("/:userIndex", async (req, res) => {
   try {
     const foundUser = await db.User.findById(req.params.userIndex);
-    const foundHoller = await db.Holler.find()
-    res.render("user/user.ejs", { user: foundUser, id: foundUser._id });
+    const foundHoller = await db.Holler.find();
+    res.render("user/user.ejs", { user: foundUser, id: foundUser._id, hollers: foundHoller });
   } catch (err) {
     console.log(err);
     res.redirect("/404");
