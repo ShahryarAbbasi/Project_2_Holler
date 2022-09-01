@@ -5,47 +5,48 @@ router.use(express.urlencoded({ extended: false }));
 
 const db = require("../models");
 
-// getting the form for a new user
+// New User Form
 router.get("/new", (req, res) => {
   res.render("user/new.ejs");
 });
 
-// creating a new user
+// Creating New User
 router.post("/", async (req, res) => {
   const createdUser = req.body;
   try {
     const newUser = await db.User.create(createdUser);
-    
-res.redirect("/hollers");
+    res.redirect("/hollers");
   } catch (err) {
     console.log(err);
     res.redirect("/404");
   }
 });
 
-// specific info on a single user
+// Single User Page
 router.get("/:userIndex", async (req, res) => {
   try {
     const foundUser = await db.User.findById(req.params.userIndex);
     const foundHoller = await db.Holler.find();
-    res.render("user/user.ejs", { user: foundUser, id: foundUser._id, hollers: foundHoller });
+    res.render("user/user.ejs", {
+      user: foundUser,
+      id: foundUser._id,
+      hollers: foundHoller,
+    });
   } catch (err) {
     console.log(err);
     res.redirect("/404");
   }
-  // res.send(`Show holler ${req.params.id} `);
 });
-// // getting all the users
-// router.get("/", (req, res) => {
-//   res.render("");
-// });
 
-// editing info on a user
+// *STRETCH FEATURES*
+// Edit User Info 
 router.put("/:id", (req, res) => {
   res.send("edit user");
 });
-// deleting a user
+
+// Delete User
 router.delete("/:id", (req, res) => {
   res.send("delete user");
 });
+
 module.exports = router;
