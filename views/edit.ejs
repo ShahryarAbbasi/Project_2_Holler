@@ -14,7 +14,6 @@
       </nav>
     <h1>Edit your Holler</h1>
     <form action="/hollers/<%=holler.id%>?_method=PUT" method="POST">
-        <label>Holler Body</label>
         <div>
             <input
             class="input"
@@ -24,7 +23,6 @@
             value="<%=holler.body%>"
             />
         </div>
-        <label>Holler image</label>
         <div>
             <input
             class="input"
@@ -36,7 +34,7 @@
         </div>
       
         <div>
-            <input type="submit" value="Edit Holler">
+            <input class="edit" type="submit" value="Edit Holler">
         </div>
     </form>
 </body>

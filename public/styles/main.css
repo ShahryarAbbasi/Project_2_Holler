@@ -13,7 +13,7 @@ h1 {
     font-size: 60px;
 }
 
-button, #delete-button {
+button, #delete-button, .edit {
   background-color: #fff000;
   border-radius: 12px;
   color: #000;
@@ -32,13 +32,19 @@ button, #delete-button {
 }
 
 button:not(:disabled):hover,
-button:not(:disabled):focus {
+button:not(:disabled):focus,
+#delete-button:not(:disabled):hover,
+#delete-button:not(:disabled):focus,
+.edit:not(:disabled):hover,
+.edit:not(:disabled):focus {
   outline: 0;
   background: #f4e603;
   box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
 }
 
-button:disabled {
+button:disabled,
+#delete-button:disabled,
+.edit:disabled {
   filter: saturate(0.2) opacity(0.5);
   -webkit-filter: saturate(0.2) opacity(0.5);
   cursor: not-allowed;
