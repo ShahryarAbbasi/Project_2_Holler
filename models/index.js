@@ -4,3 +4,4 @@ module.exports = {
     Holler: require('./Holler'),
     User: require('./User'),
 }
+
