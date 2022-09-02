@@ -11,9 +11,14 @@
     <nav class="nav">
         <a class="nav-hollers" href="/hollers">Hollers</a>
         <a class="nav-home" href="/">Home</a>
-      </nav>
-    <h3><%=holler.body%></h3>
-    <p><%=holler.createdAt%></p>
+    </nav>
+    <div class="timeline">
+        <div class="holler">
+            <h3><%=holler.body%></h3>
+            <img src='<%=holler.image%>'>
+            <p><%=holler.createdAt%></p>
+        </div>
+    </div>
     <div>
         <p class="control">
             <form action="/hollers/<%= holler.id %>?_method=DELETE" method="POST">
