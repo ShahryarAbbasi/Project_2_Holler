@@ -14,12 +14,12 @@
       </nav>
     <h1><%=user.handle%>'s Hollers</h1>
     <div class="timeline"> 
-        <% for(let i = 0; i < hollers.length; i++) {%>
+        <% for(let i = (hollers.length - 1); i >= 0; i--) {%>
             <% let userId = hollers[i].user %>
             <%if (userId == user.id) {%>
                 <div class="holler">
-                    <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
-                    <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
+                    <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a></p>
+                    <img src='<%=hollers[i].image%>'>
                 </div>
             <% } %>
         <% } %>
