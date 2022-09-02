@@ -1,6 +1,6 @@
 require("../config/db.connection");
 
 module.exports = {
-    Holler: require('./Holler'),
-    User: require('./User'),
-}
+  Holler: require("./holler"),
+  User: require("./User"),
+};

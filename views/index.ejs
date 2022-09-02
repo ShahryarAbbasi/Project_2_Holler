@@ -8,10 +8,14 @@
     <title>Holler</title>
 </head>
 <body>
-    <h1>Holler Timeline</h1>
-    <button><a href="/hollers/new">Holler Something!</a></button>
+    <nav class="nav">
+        <a class="nav-hollers" href="/hollers">Hollers</a>
+        <a class="nav-home" href="/">Home</a>
+      </nav>
+    <h1>HOLLER</h1>
+    <a href="/hollers/new"><button>Holler Something!</button></a>
     <div class="timeline"> 
-        <% for(let i = 0; i < hollers.length; i++) {%>
+        <% for(let i = (hollers.length - 1); i >= 0; i--) {%>
             <% let userId = hollers[i].user %>
            <% let currentUser%>
            <% for (let j = 0; j < users.length; j++) {%>
@@ -19,9 +23,11 @@
                     <% currentUser = users[j] %>
                 <% } %>
             <% } %>
-        <p><a href="/user/<%=currentUser._id%>"><%= currentUser.handle%>: </a><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
-        <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
-    <%}%>
+            <div class="holler">
+                <p class="handle"><a href="/user/<%=currentUser._id%>"><%= currentUser.handle%></a></p><p class="holler-text"><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a></p>
+                <img src='<%=hollers[i].image%>'>
+            </div>
+        <%}%>
     </div>
 </body>
 </html>

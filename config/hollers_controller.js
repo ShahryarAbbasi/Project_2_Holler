@@ -2,28 +2,24 @@ const express = require("express");
 const { User } = require("../models");
 const router = express.Router();
 
-// Middleware that might be needed later on
+// Middleware
 router.use(express.json());
-router.use(express.urlencoded({extended:false}));
+router.use(express.urlencoded({ extended: false }));
 
 const db = require("../models");
-// All hollers
-// router.get("/", (req, res) => {
-//   res.send("All the hollers right here");
-// });
-// getting the form for a new holler
+
+// New Holler
 router.get("/new", async (req, res) => {
   const allUsers = await db.User.find();
   const context = { users: allUsers };
   res.render("new.ejs", context);
 });
 
-// Post request for adding new holler to db
+// Post Request for New Holler
 router.post("/", async (req, res) => {
   const createdHoller = req.body;
   try {
     const newHoller = await db.Holler.create(createdHoller);
-
     res.redirect("/hollers");
   } catch (err) {
     console.log(err);
@@ -31,7 +27,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Show a specific holler
+// Show Page for Specific Holler
 router.get("/:hollerIndex", async (req, res) => {
   try {
     const foundHoller = await db.Holler.findById(req.params.hollerIndex);
@@ -40,16 +36,14 @@ router.get("/:hollerIndex", async (req, res) => {
     console.log(err);
     res.redirect("/404");
   }
-  // res.send(`Show holler ${req.params.id} `);
 });
 
-// post request for all hollers from holler db
+// Show all Hollers
 router.get("/", async (req, res) => {
   try {
     const allHollers = await db.Holler.find();
     const allUsers = await db.User.find();
-    // const foundUser = await db.Holler.find().populate({path: 'user', model: 'User'})
-    const context = { hollers: allHollers, users: allUsers, };
+    const context = { hollers: allHollers, users: allUsers };
     res.render("index.ejs", context);
   } catch (err) {
     console.log(err);
@@ -57,7 +51,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// deleting a holler
+// Delete Holler
 router.delete("/:hollerId", async (req, res) => {
   try {
     const foundHoller = await db.Holler.findByIdAndDelete(req.params.hollerId);
@@ -68,7 +62,7 @@ router.delete("/:hollerId", async (req, res) => {
   }
 });
 
-// editing a holler
+// Edit Holler Page
 router.get("/:hollerId/edit", async (req, res) => {
   try {
     const foundHoller = await db.Holler.findById(req.params.hollerId);
@@ -79,7 +73,7 @@ router.get("/:hollerId/edit", async (req, res) => {
   }
 });
 
-// update router
+// Updating Holler
 router.put("/:hollerId", async (req, res) => {
   try {
     const updatedData = req.body;
@@ -92,4 +86,5 @@ router.put("/:hollerId", async (req, res) => {
     res.redirect("/404");
   }
 });
+
 module.exports = router;

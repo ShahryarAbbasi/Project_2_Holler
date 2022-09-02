@@ -11,7 +11,9 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res)=> {
     res.render('home.ejs')
 })
-
+app.get('/404', (req,res)=>{
+  res.render('404.ejs')
+})
 // Linking users.js router
 const userRouter = require("./config/users_controller");
 app.use("/user", userRouter);
@@ -19,4 +21,4 @@ app.use("/user", userRouter);
 const hollerRouter = require("./config/hollers_controller");
 app.use("/hollers", hollerRouter);
 
-app.listen(4000, () => console.log('starting server at port:', PORT))
+app.listen(process.env.PORT || 4000);
