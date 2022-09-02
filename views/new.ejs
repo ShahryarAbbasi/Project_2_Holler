@@ -8,15 +8,17 @@
     <title>Holler</title>
 </head>
 <body>
+    <nav class="nav">
+        <a class="nav-hollers" href="/hollers">Hollers</a>
+        <a class="nav-home" href="/">Home</a>
+      </nav>
     <h1>Create a new holler</h1>
     <form action="/hollers" method="POST" >
         <div>
-           <label for="body">Write Something</label> 
-            <input class="input" name="body" type="text" id="body"/>
+            <input class="input" name="body" type="text" id="body" placeholder="Write Something here!"/>
         </div>
         <div>
-            image:
-            <input class="input" name="image" type="text" id="image"/>
+            <input class="input" name="image" type="text" id="image" placeholder="Insert Image here!"/>
         </div>
         <div>
             <select name="user">

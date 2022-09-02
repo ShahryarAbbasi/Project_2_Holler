@@ -8,13 +8,19 @@
     <title>Holler</title>
 </head>
 <body>
-    <h1><%=user.handle%>'s Profile</h1>
-    <div class="User Hollers"> 
+    <nav class="nav">
+        <a class="nav-hollers" href="/hollers">Hollers</a>
+        <a class="nav-home" href="/">Home</a>
+      </nav>
+    <h1><%=user.handle%>'s Hollers</h1>
+    <div class="timeline"> 
         <% for(let i = 0; i < hollers.length; i++) {%>
             <% let userId = hollers[i].user %>
             <%if (userId == user.id) {%>
-                <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
-                <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
+                <div class="holler">
+                    <p><a href="/hollers/<%=hollers[i].id%>"><%= hollers[i].body%></a>
+                    <img src='<%=hollers[i].image%>' style="max-width: 200px; display: block;"></p>
+                </div>
             <% } %>
         <% } %>
     </div>
