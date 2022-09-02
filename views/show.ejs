@@ -8,18 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h5>
-        Details of Holler!
-    </h5>
+    <nav class="nav">
+        <a class="nav-hollers" href="/hollers">Hollers</a>
+        <a class="nav-home" href="/">Home</a>
+      </nav>
     <h3><%=holler.body%></h3>
     <p><%=holler.createdAt%></p>
     <div>
         <p class="control">
             <form action="/hollers/<%= holler.id %>?_method=DELETE" method="POST">
-                    <input class="button is-danger" type="submit" value="Delete Holler"/>                    
+                    <input class="button is-danger" id="delete-button" type="submit" value="Delete Holler"/>                    
             </form>
         </p>
-        <button><a href="/hollers/<%=holler.id%>/edit">Edit Holler</a></button>
+        <a href="/hollers/<%=holler.id%>/edit"><button>Edit Holler</button></a>
     </div>
 </body>
 </html>
