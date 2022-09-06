@@ -7,8 +7,6 @@ const userSchema = new mongoose.Schema({
 })
 
 const User = mongoose.model('User', userSchema)
-// const mongoURI = process.env.MONGODB_URI;
-// const db = mongoose.connection
 
 module.exports = User
 
